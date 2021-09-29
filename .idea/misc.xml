@@ -3,6 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../../layout/compose-model-1632541710812.xml" value="0.33" />
+        <entry key="../../../../../../../layout/compose-model-1632604842842.xml" value="0.33" />
+        <entry key="../../../../../../../layout/compose-model-1632630838816.xml" value="0.31296296296296294" />
+        <entry key="../../../../../../../layout/compose-model-1632691449787.xml" value="0.5" />
+        <entry key="../../../../../../../layout/compose-model-1632694132008.xml" value="0.33" />
+        <entry key="../../../../../../../layout/compose-model-1632697587906.xml" value="0.34797297297297297" />
+        <entry key="../../../../../../../layout/compose-model-1632758110942.xml" value="0.33699324324324326" />
+        <entry key="../../../../../../../layout/compose-model-1632776674410.xml" value="0.3251689189189189" />
+        <entry key="../../../../../../../layout/compose-model-1632838104729.xml" value="0.28885135135135137" />
+        <entry key="../../../../../../../layout/compose-model-1632843555977.xml" value="0.21283783783783783" />
+        <entry key="../../../../../../../layout/compose-model-1632860111422.xml" value="0.33" />
+        <entry key="../../../../../../../layout/compose-model-1632861633088.xml" value="0.4398148148148148" />
+        <entry key="../../../../../../../layout/compose-model-1632876056483.xml" value="0.34881756756756754" />
+        <entry key="app/src/main/res/drawable/avatar_1.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_favoriate_rap_18dp.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_favorite_gray_18dp.xml" value="0.41333333333333333" />
+        <entry key="app/src/main/res/drawable/ic_visibility_grap_18dp.xml" value="0.31296296296296294" />
+        <entry key="app/src/main/res/drawable/ic_visibility_gray_18dp.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
       </map>
     </option>
