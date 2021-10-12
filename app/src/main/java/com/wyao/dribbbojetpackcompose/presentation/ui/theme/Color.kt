@@ -1,4 +1,4 @@
-package com.wyao.dribbbojetpackcompose.ui.theme
+package com.wyao.dribbbojetpackcompose.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.colorspace.ColorSpaces
@@ -35,3 +35,7 @@ val red7 = Color(0xFFDC514E).convert(ColorSpaces.CieXyz)
 val red8 = Color(0xFFCBC7BF).convert(ColorSpaces.CieXyz)
 val yellow1 = Color(0xFFF6CA23).convert(ColorSpaces.CieXyz)
 val purple700 = Color(0xFF3700B3).convert(ColorSpaces.CieXyz)
+val DarkGray = Color(0xFF202020).convert(ColorSpaces.CieXyz)
+val MediumGray = Color(0xFF505050).convert(ColorSpaces.CieXyz)
+val ColorPrimary = Color(0xFF08FF04).convert(ColorSpaces.CieXyz)
+val TextWhite = Color(0xFFEEEEEE).convert(ColorSpaces.CieXyz)

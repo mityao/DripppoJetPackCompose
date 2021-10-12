@@ -1,4 +1,4 @@
-package com.wyao.dribbbojetpackcompose.ui
+package com.wyao.dribbbojetpackcompose.presentation.ui
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -9,24 +9,19 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wyao.dribbbojetpackcompose.R
-import com.wyao.dribbbojetpackcompose.ui.theme.grey1
-import com.wyao.dribbbojetpackcompose.ui.theme.white
+import com.wyao.dribbbojetpackcompose.presentation.ui.theme.white
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Preview

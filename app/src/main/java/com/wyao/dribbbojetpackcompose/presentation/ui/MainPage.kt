@@ -1,4 +1,4 @@
-package com.wyao.dribbbojetpackcompose.ui
+package com.wyao.dribbbojetpackcompose.presentation.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wyao.dribbbojetpackcompose.R
-import com.wyao.dribbbojetpackcompose.ui.theme.purple700
-import com.wyao.dribbbojetpackcompose.ui.theme.white
+import com.wyao.dribbbojetpackcompose.presentation.ui.theme.purple700
+import com.wyao.dribbbojetpackcompose.presentation.ui.theme.white
 
 val drawerItemPadding = Modifier.padding(24.dp, 12.dp, 12.dp, 12.dp)
 val myTabs = listOf(

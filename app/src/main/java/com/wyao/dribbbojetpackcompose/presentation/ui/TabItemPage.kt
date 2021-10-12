@@ -1,4 +1,4 @@
-package com.wyao.dribbbojetpackcompose.ui
+package com.wyao.dribbbojetpackcompose.presentation.ui
 
 import androidx.compose.runtime.Composable
 
