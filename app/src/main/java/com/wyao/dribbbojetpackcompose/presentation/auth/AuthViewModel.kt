@@ -1,18 +1,26 @@
 package com.wyao.dribbbojetpackcompose.presentation.auth
 
 import androidx.lifecycle.ViewModel
-import com.wyao.dribbbojetpackcompose.auth.Auth
-import com.wyao.dribbbojetpackcompose.data.remote.dto.AccessTokenDto
+import com.wyao.dribbbojetpackcompose.AccessToken
+import com.wyao.dribbbojetpackcompose.data.repository.AuthRepositoryImpl
 import javax.inject.Inject
 
-class AuthViewModel @Inject constructor(private val auth: Auth): ViewModel() {
+class AuthViewModel @Inject constructor(private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
 
-    val authUrl = auth.getAuthorizeUrl()
-    val redirectUrl = auth.getRedirectUri()
-    val keyCode = auth.getKeyCode()
+    fun getRedirectUri(): String {
+        return authRepositoryImpl.getRedirectUri()
+    }
 
-    suspend fun fetchAccessToken(accessCode: String): AccessTokenDto {
-        return auth.fetchAccessToken(accessCode)
+    fun getKeyCode(): String {
+        return authRepositoryImpl.getKeyCode()
+    }
+
+    fun getAuthorizeUrl(): String {
+        return authRepositoryImpl.getAuthorizeUrl()
+    }
+
+    suspend fun fetchAccessToken(accessCode: String): AccessToken {
+        return authRepositoryImpl.fetchAccessToken(accessCode)
     }
 
 }

@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
-import com.wyao.dribbbojetpackcompose.data.remote.dto.AccessTokenDto
+import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.presentation.Screen
 
 
@@ -39,16 +39,16 @@ fun AuthScreen(navController: NavController,
                 )
                 webViewClient = object : WebViewClient() {
                     override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                        if (url != null && url.startsWith(authViewModel.redirectUrl)) {
+                        if (url != null && url.startsWith(authViewModel.getRedirectUri())) {
                             val uri = Uri.parse(url)
-                            val accessCode = uri.getQueryParameter(authViewModel.keyCode)
+                            val accessCode = uri.getQueryParameter(authViewModel.getKeyCode())
                             // use accessCode, get accessToken
                             if (accessCode != null) {
-                                lateinit var accessToken: AccessTokenDto
+                                lateinit var accessToken: AccessToken
                                 suspend {
                                     accessToken = authViewModel.fetchAccessToken(accessCode)
                                 }
-                                navController.navigate(Screen.LoginScreen.route + "/${accessToken.access_token}")
+                                navController.navigate(Screen.LoginScreen.route + "/${accessToken.accessToken}")
                             }
                         }
                         return super.shouldOverrideUrlLoading(view, url)
@@ -69,7 +69,7 @@ fun AuthScreen(navController: NavController,
                         progress = newProgress.toFloat()
                     }
                 }
-                loadUrl(authViewModel.authUrl)
+                loadUrl(authViewModel.getAuthorizeUrl())
             }
         })
 

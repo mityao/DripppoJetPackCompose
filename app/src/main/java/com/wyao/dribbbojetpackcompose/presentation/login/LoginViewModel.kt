@@ -1,24 +1,23 @@
 package com.wyao.dribbbojetpackcompose.presentation.login
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.common.Constants
-import com.wyao.dribbbojetpackcompose.data.remote.dto.AccessTokenDto
-import com.wyao.dribbbojetpackcompose.dribbbo.Dribbbo
+import com.wyao.dribbbojetpackcompose.domain.repository.DribbboRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val dribbbo: Dribbbo,
+    private val dribbboRepository: DribbboRepository,
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     init {
-        savedStateHandle.get<AccessTokenDto>(Constants.ACCESS_TOKEN)?.let { accessToken ->
+        savedStateHandle.get<AccessToken>(Constants.ACCESS_TOKEN)?.let { accessToken ->
             viewModelScope.launch {
                 logIn(accessToken)
             }
@@ -26,10 +25,12 @@ class LoginViewModel @Inject constructor(
     }
 
     fun isLoggedIn(): Boolean {
-        return dribbbo.isLoggedIn()
+        return dribbboRepository.isLoggedIn()
     }
 
-    suspend fun logIn(accessTokenDto: AccessTokenDto) {
-        dribbbo.login(accessTokenDto)
+    fun logIn(AccessToken: AccessToken) {
+        viewModelScope.launch {
+            dribbboRepository.login(AccessToken)
+        }
     }
 }

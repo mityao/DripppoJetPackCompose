@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "com.wyao.dribbbojetpackcompose";
+option java_multiple_files = true;
+
+message AccessToken {
+  string access_token = 1;
+  string token_type = 2;
+  string scope = 3;
+}
+
+message User {
+  string avatar_url = 1;
+  string bio = 2;
+  bool can_upload_shot = 3;
+  string created_at = 4;
+  int32 followers_count = 5;
+  string html_url = 6;
+  int32 id = 7;
+  Links links = 8;
+  string location = 9;
+  string login = 10;
+  string name = 11;
+  bool pro = 12;
+  repeated Team teams = 13;
+  string type = 14;
+
+  message Team {
+    string avatar_url = 1;
+    string bio = 2;
+    string created_at = 3;
+    string html_url = 4;
+    int32 id = 5;
+    Links links = 6;
+    string location = 7;
+    string login = 8;
+    string name = 9;
+    string type = 10;
+    string updated_at = 11;
+  }
+
+  message Links {
+    string twitter = 1;
+    string web = 2;
+  }
+
+}

@@ -7,7 +7,6 @@ import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.data.AccessTokenSerializer
-import com.wyao.dribbbojetpackcompose.data.remote.dto.AccessTokenDto
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -24,17 +23,17 @@ class PrefsStoreImpl @Inject constructor(@ApplicationContext context: Context) :
 
     val ACCESS_TOKEN = stringPreferencesKey(AUTH_TOKEN__NAME)
 
-    override suspend fun storeAccessToken(accessTokenDto: AccessTokenDto) {
+    override suspend fun storeAccessToken(accessToken: AccessToken) {
         mContext.authTokenDataStore.updateData { preferences ->
             preferences.toBuilder()
-                .setAccessToken(accessTokenDto.access_token)
-                .setTokenType(accessTokenDto.token_type)
-                .setScope(accessTokenDto.scope)
+                .setAccessToken(accessToken.accessToken)
+                .setTokenType(accessToken.tokenType)
+                .setScope(accessToken.scope)
                 .build()
         }
     }
 
-    override suspend fun getAccessToken(): Flow<AccessToken> {
+    override suspend fun loadAccessToken(): Flow<AccessToken> {
         return accessTokenFlow
     }
 
