@@ -56,7 +56,6 @@ class AuthRepositoryImpl @Inject constructor(
                 .build()
             authApi.fetchAccessToken(postBody)
         }
-
     }
 
     override suspend fun loadAccessToken(): Flow<AccessToken> {

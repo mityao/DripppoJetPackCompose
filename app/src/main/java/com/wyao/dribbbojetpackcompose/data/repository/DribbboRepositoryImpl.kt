@@ -2,16 +2,27 @@ package com.wyao.dribbbojetpackcompose.data.repository
 
 import android.content.Context
 import com.wyao.dribbbojetpackcompose.AccessToken
+import com.wyao.dribbbojetpackcompose.User
+import com.wyao.dribbbojetpackcompose.data.AuthorizationInterceptor
+import com.wyao.dribbbojetpackcompose.data.remote.DribbboApi
 import com.wyao.dribbbojetpackcompose.domain.repository.AuthRepository
 import com.wyao.dribbbojetpackcompose.domain.repository.DribbboRepository
-import kotlinx.coroutines.flow.collect
+import com.wyao.dribbbojetpackcompose.prefsstore.PrefsStore
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+ import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DribbboRepositoryImpl @Inject constructor(
-    private val authRepository: AuthRepository
-) : DribbboRepository {
+    private val dribbboApi: DribbboApi,
+    private val prefsStore: PrefsStore,
+    private val authRepository: AuthRepository,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    ) : DribbboRepository {
 
     private var _accessToken: String? = null
+    private var _user: User? = null
 
     override suspend fun init() {
         authRepository.loadAccessToken().collect {
@@ -19,6 +30,8 @@ class DribbboRepositoryImpl @Inject constructor(
         }
         if (_accessToken != null) {
             // User already exist, load it
+        } else {
+
         }
     }
 
@@ -27,14 +40,30 @@ class DribbboRepositoryImpl @Inject constructor(
     }
 
     override suspend fun login(accessToken: AccessToken) {
-
+        withContext(ioDispatcher) {
+            _accessToken = accessToken.accessToken
+            authRepository.storeAccessToken(accessToken)
+            _user = fetchUser()
+            _user?.let { storeUser(it) }
+        }
     }
 
     override suspend fun logOut(context: Context) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun storeAccessToken(accessToken: AccessToken) {
-        authRepository.storeAccessToken(accessToken)
+    override fun getUser(): User? {
+        return _user
     }
+
+    private suspend fun fetchUser(): User {
+        return withContext(ioDispatcher) {
+            dribbboApi.getUser()
+        }
+    }
+
+    private suspend fun storeUser(user: User) {
+        prefsStore.storeUser(user)
+    }
+
 }

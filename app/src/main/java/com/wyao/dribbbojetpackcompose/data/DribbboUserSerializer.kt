@@ -4,21 +4,23 @@ import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
 import com.wyao.dribbbojetpackcompose.AccessToken
+import com.wyao.dribbbojetpackcompose.User
 import java.io.InputStream
 import java.io.OutputStream
 
-object AccessTokenSerializer : Serializer<AccessToken> {
-    override val defaultValue: AccessToken = AccessToken.getDefaultInstance()
+object DribbboUserSerializer : Serializer<User> {
+
+    override val defaultValue: User = User.getDefaultInstance()
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun readFrom(input: InputStream): AccessToken {
+    override suspend fun readFrom(input: InputStream): User {
         return try {
-            AccessToken.parseFrom(input)
+            User.parseFrom(input)
         } catch (exception: InvalidProtocolBufferException) {
             throw CorruptionException("Cannot read proto.", exception)
         }
     }
 
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun writeTo(t: AccessToken, output: OutputStream) = t.writeTo(output)
+    override suspend fun writeTo(t: User, output: OutputStream) = t.writeTo(output)
 }

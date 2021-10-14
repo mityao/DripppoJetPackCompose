@@ -2,6 +2,7 @@ package com.wyao.dribbbojetpackcompose.domain.repository
 
 import android.content.Context
 import com.wyao.dribbbojetpackcompose.AccessToken
+import com.wyao.dribbbojetpackcompose.User
 
 interface DribbboRepository {
 
@@ -13,6 +14,6 @@ interface DribbboRepository {
 
     suspend fun logOut(context: Context)
 
-    suspend fun storeAccessToken(accessToken: AccessToken)
+    fun getUser(): User?
 
 }
