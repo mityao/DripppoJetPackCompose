@@ -25,9 +25,7 @@ fun LoginScreen(
             .fillMaxSize()
             .padding(0.dp, 32.dp)
     ) {
-        AuthenticationButton(loginViewModel, navController,"SIGN ON")
-        AuthenticationButton(loginViewModel, navController,"SIGN IN")
-        AuthenticationButton(loginViewModel, navController,"SKIP")
+        AuthenticationButton(loginViewModel, navController,"Explore the world!")
     }
 }
 

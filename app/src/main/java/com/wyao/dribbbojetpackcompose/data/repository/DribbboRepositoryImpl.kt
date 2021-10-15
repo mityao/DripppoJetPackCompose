@@ -5,6 +5,7 @@ import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.User
 import com.wyao.dribbbojetpackcompose.data.AuthorizationInterceptor
 import com.wyao.dribbbojetpackcompose.data.remote.DribbboApi
+import com.wyao.dribbbojetpackcompose.di.IoDispatcher
 import com.wyao.dribbbojetpackcompose.domain.repository.AuthRepository
 import com.wyao.dribbbojetpackcompose.domain.repository.DribbboRepository
 import com.wyao.dribbbojetpackcompose.prefsstore.PrefsStore
@@ -18,7 +19,7 @@ class DribbboRepositoryImpl @Inject constructor(
     private val dribbboApi: DribbboApi,
     private val prefsStore: PrefsStore,
     private val authRepository: AuthRepository,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
     ) : DribbboRepository {
 
     private var _accessToken: String? = null

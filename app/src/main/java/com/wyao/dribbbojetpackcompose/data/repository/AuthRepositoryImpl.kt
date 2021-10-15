@@ -3,6 +3,7 @@ package com.wyao.dribbbojetpackcompose.data.repository
 import android.net.Uri
 import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.data.remote.AuthApi
+import com.wyao.dribbbojetpackcompose.di.IoDispatcher
 import com.wyao.dribbbojetpackcompose.domain.repository.AuthRepository
 import com.wyao.dribbbojetpackcompose.prefsstore.PrefsStore
 import kotlinx.coroutines.CoroutineDispatcher
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val authApi: AuthApi,
     private val prefsStore: PrefsStore,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
     ): AuthRepository {
 
     val REQ_CODE = 100
@@ -28,11 +29,11 @@ class AuthRepositoryImpl @Inject constructor(
     private val KEY_SCOPE = "scope"
     private val KEY_ACCESS_TOKEN = "access_token"
 
-    private val CLIENT_ID = "e50e131a8baf0b6a0fbca9afac17904696780962ec12358dfbd25cd139f6e092"
+    private val CLIENT_ID = "c63438c61687b69749f81253d5af6f70d197daba49a96abca63f6b800c2c44e1"
 
-    private val CLIENT_SECRET = "804c7e22ef61e48bc317204bca6fcb57f8e60feef610d6752d81a4b6a004b2ae"
+    private val CLIENT_SECRET = "ebe0e82f0157a1d65e1abfd1bc4fb04f9f0a5866106a8bce04b480d675490191"
 
-    private val SCOPE = "public+write"
+    private val SCOPE = "public+upload"
 
     private val URI_AUTHORIZE = "https://dribbble.com/oauth/authorize"
 

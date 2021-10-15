@@ -3,9 +3,12 @@ package com.wyao.dribbbojetpackcompose.presentation.auth
 import androidx.lifecycle.ViewModel
 import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.data.repository.AuthRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-class AuthViewModel @Inject constructor(private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
+@HiltViewModel
+class AuthViewModel @Inject constructor(
+    private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
 
     fun getRedirectUri(): String {
         return authRepositoryImpl.getRedirectUri()

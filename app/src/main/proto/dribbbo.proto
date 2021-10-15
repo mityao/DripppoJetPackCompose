@@ -45,3 +45,82 @@ message User {
   }
 
 }
+
+message Shot {
+
+  bool animated = 1;
+  repeated Attachment attachments = 2;
+  string height = 3;
+  string html_url = 4;
+  int32 id = 5;
+  Images images = 6;
+  bool low_profile = 7;
+  repeated Project projects = 8;
+  string published_at = 9;
+  repeated string tags = 10;
+  Team team = 11;
+  string title = 12;
+  string updated_at = 13;
+  Video video = 14;
+  int32 width = 15;
+
+  message Attachment {
+    string content_type = 1;
+    string created_at = 2;
+    int32 id = 3;
+    int32 size = 4;
+    string thumbnail_url = 5;
+    string url = 6;
+  }
+
+  message Images {
+    string hidpi = 1;
+    string normal = 2;
+    string teaser = 3;
+  }
+
+  message Project {
+    string created_at = 1;
+    string description = 2;
+    string id = 3;
+    string name = 4;
+    string shots_count = 5;
+    string updated_at = 6;
+  }
+
+  message Links {
+    string twitter = 1;
+    string web = 2;
+  }
+
+  message Team {
+    string avatar_url = 1;
+    string bio = 2;
+    string created_at = 3;
+    string html_url = 4;
+    int32 id = 5;
+    Links links = 6;
+    string location = 7;
+    string login = 8;
+    string name = 9;
+    string type = 10;
+    string updated_at = 11;
+  }
+
+  message Video {
+    string created_at = 1;
+    int32 duration = 2;
+    int32 height = 3;
+    int32 id = 4;
+    string large_preview_url = 5;
+    bool silent = 6;
+    string small_preview_url = 7;
+    string updated_at = 8;
+    string url = 9;
+    string video_file_name = 10;
+    int32 video_file_size = 11;
+    int32 width = 12;
+    string xlarge_preview_url = 13;
+  }
+
+}

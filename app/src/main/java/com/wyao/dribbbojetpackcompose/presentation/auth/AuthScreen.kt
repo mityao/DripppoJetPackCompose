@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.wyao.dribbbojetpackcompose.AccessToken
 import com.wyao.dribbbojetpackcompose.presentation.Screen
@@ -24,7 +25,8 @@ import com.wyao.dribbbojetpackcompose.presentation.Screen
 
 @Composable
 fun AuthScreen(navController: NavController,
-               authViewModel: AuthViewModel) {
+               authViewModel: AuthViewModel = hiltViewModel()
+) {
 
     var onPageStarted by remember { mutableStateOf(false) }
     var onPageFinished by remember { mutableStateOf(false) }

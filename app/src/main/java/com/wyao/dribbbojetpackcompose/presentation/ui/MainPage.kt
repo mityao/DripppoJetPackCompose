@@ -44,7 +44,7 @@ fun MainScaffold() {
     Scaffold (
         topBar = { AppToolBar() },
         drawerContent = { NavigationDrawer() },
-        drawerBackgroundColor = purple700
+        drawerBackgroundColor = white
     ) {
         Tabs(myTabs)
     }
