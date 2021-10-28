@@ -31,22 +31,22 @@ object AppModule {
     fun provideAuthApi(): AuthApi {
         return Retrofit.Builder()
             .baseUrl(Constants.AUTHORIZE_BASE_URL)
-            .addConverterFactory(ProtoConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(AuthApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideDribbboApi(): DribbboApi {
+    fun provideDribbboApi(authorizationInterceptor: AuthorizationInterceptor): DribbboApi {
         val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(AuthorizationInterceptor())
+            .addInterceptor(authorizationInterceptor)
             .build()
 
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(Constants.DRIBBBO_BASE_URL)
-            .addConverterFactory(ProtoConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(DribbboApi::class.java)
     }

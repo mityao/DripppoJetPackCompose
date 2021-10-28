@@ -27,14 +27,16 @@ class PrefsStoreImpl @Inject constructor(
     private val TAG = "PrefsStoreImpl"
     private val _context = context
 
-    override suspend fun storeAccessToken(accessToken: AccessToken) {
-        authorizationInterceptor.setAccessToken(accessToken.accessToken)
-        _context.authTokenDataStore.updateData { preferences ->
-            preferences.toBuilder()
-                .setAccessToken(accessToken.accessToken)
-                .setTokenType(accessToken.tokenType)
-                .setScope(accessToken.scope)
-                .build()
+    override suspend fun storeAccessToken(accessToken: AccessToken?) {
+        if (accessToken != null) {
+            authorizationInterceptor.setAccessToken(accessToken.accessToken)
+            _context.authTokenDataStore.updateData { preferences ->
+                preferences.toBuilder()
+                    .setAccessToken(accessToken.accessToken)
+                    .setTokenType(accessToken.tokenType)
+                    .setScope(accessToken.scope)
+                    .build()
+            }
         }
     }
 

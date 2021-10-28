@@ -4,7 +4,9 @@ import com.wyao.dribbbojetpackcompose.common.Constants
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AuthorizationInterceptor @Inject constructor() : Interceptor {
 
     private var _access_token: String? = null

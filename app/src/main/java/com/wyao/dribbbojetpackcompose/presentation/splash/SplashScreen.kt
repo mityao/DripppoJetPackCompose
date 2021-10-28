@@ -45,18 +45,19 @@ fun SplashScreen(
                 })
         )
         delay(3000L)
-        val route =  when (splashViewModel.isLoggedIn()) {
-            true -> Screen.MainScreen.route
-            false -> Screen.LoginScreen.route
-        }
         navController.popBackStack()
-        navController.navigate(route)
+        when (splashViewModel.isLoggedIn()) {
+            true -> navController.navigate(Screen.MainScreen.route)
+            false -> navController.navigate(Screen.LoginScreen.withArgs(null))
+        }
     }
 
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize().scale(scale.value)
+        modifier = Modifier
+            .fillMaxSize()
+            .scale(scale.value)
     ) {
         DribbboLogo()
         DribbboLabel()
@@ -81,7 +82,10 @@ fun DribbboLogo() {
     Image(
         painter = painterResource(id = R.drawable.ic_dribbble_logo),
         contentDescription = "DribbboLogo",
-        modifier = Modifier.width(240.dp).height(240.dp).padding(4.dp)
+        modifier = Modifier
+            .width(240.dp)
+            .height(240.dp)
+            .padding(4.dp)
     )
 }
 

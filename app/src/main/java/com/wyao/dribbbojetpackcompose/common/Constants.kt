@@ -6,7 +6,7 @@ object Constants {
 
     const val DRIBBBO_APP_NAME = "Dribbbo"
 
-    const val DRIBBBO_BASE_URL = "https://api.dribbble.com/v2/user/"
+    const val DRIBBBO_BASE_URL = "https://api.dribbble.com/v2/"
 
     const val AUTHORIZE_BASE_URL = "https://dribbble.com/"
 
@@ -14,7 +14,7 @@ object Constants {
 
     const val NO_AUTH_HEADER_KEY = "accessToken"
 
-    const val AUTHORIZATION_HEADER = "No-Authentication"
+    const val AUTHORIZATION_HEADER = "Authorization"
 
-    const val BEARER = "Bearer"
+    const val BEARER = "Bearer "
 }

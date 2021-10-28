@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.wyao.dribbbojetpackcompose.R
 import com.wyao.dribbbojetpackcompose.presentation.ui.theme.purple700
 import com.wyao.dribbbojetpackcompose.presentation.ui.theme.white
@@ -38,9 +39,8 @@ val myTabs = listOf(
     TabItem.WebDesign,
 )
 
-@Preview
 @Composable
-fun MainScaffold() {
+fun MainScreen(navController: NavController) {
     Scaffold (
         topBar = { AppToolBar() },
         drawerContent = { NavigationDrawer() },

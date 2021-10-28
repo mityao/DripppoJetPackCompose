@@ -2,12 +2,13 @@ package com.wyao.dribbbojetpackcompose.data.remote
 
 import com.wyao.dribbbojetpackcompose.Shot
 import com.wyao.dribbbojetpackcompose.User
+import com.wyao.dribbbojetpackcompose.data.remote.dto.UserDto
 import retrofit2.http.*
 
 interface DribbboApi {
 
     @GET("user")
-    suspend fun getUser(): User
+    suspend fun getUser(): UserDto
 
     @GET("user/shots")
     suspend fun getShots(): List<Shot>
